@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>helvetin helvetti</title>
+  </head>
+  <body>
+    <div id="canvas">
+
+    </div>
+    <script type="text/javascript">
+    window.requestAnimationFrame=function() {
+      return window.requestAnimationFrame||
+      window.webkitRequestAnimationFrame||
+      window.mozRequestAnimationFrame||
+      window.msRequestAnimationFrame||
+      window.oRequestAnimationFrame||
+      function(f){window.setTimeout(f,1e3/60)}}();
+
+    var reserviin = new Date(2017, 8, 13)
+    var today = new Date();
+
+    var aamujenLkm = reserviin.getTime() - today.getTime();
+    aamujenLkm = Math.ceil(aamujenLkm / (1000 * 60 * 60 * 24))
+
+    var ampumarata = {
+      canvas: document.createElement('canvas'),
+      gravity: 0.3,
+      start: function() {
+        this.canvas.height = 700;
+        this.canvas.width =  700;
+        this.ctx = this.canvas.getContext('2d');
+        document.getElementById('canvas').appendChild(this.canvas);
+      },
+      clear: function() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      }
+    }
+
+    ampumarata.start();
+    function Luoti(vy) {
+      this.radius = 5;
+      this.x = Math.random()*50 + 50;
+      this.y = ampumarata.canvas.height/3;
+      this.vy = vy;
+      this.vx = 25;
+      this.gravity = 0;
+      this.pomput = 0;
+      //this.osunut_seinaan = false;
+
+      this.draw = function() {
+        ctx = ampumarata.ctx;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+        ctx.fill();
+      },
+      this.tormays = function(toinen) {
+        console.log("fasd");
+        if(Math.abs(toinen.x - this.x) < self.radius &&
+         Math.abs(toinen.y - this.y) < self.radius) {
+           this.x = 50;
+           this.y = 50;
+           //var koira = this.vx;
+           //this.vx =  0.8 * toinen.vx;
+           //toinen.vx = 0.8 * koira;
+           //koira = this.vy;
+           //this.vy = 0.8 * toinen.vy;
+           //toinen.vy = koira;
+         }
+      }
+    }
+
+    var luodit = [];
+    //for (var i = 0; i < aamujenLkm; i++) {
+    //}
+    var frames = 0;
+    (function update() {
+      requestAnimationFrame(update);
+      frames++;
+      ampumarata.clear();
+
+      if(luodit.length <= aamujenLkm && frames % 1 == 0){
+        //console.log(frames);
+        luodit.push(new Luoti(-frames/100));
+      }
+
+      for (var i = 0; i < luodit.length; i++) {
+      luoti = luodit[i];
+      //for (var j = 0; j < luodit.length; j++) {
+      //  luoti.tormays(luodit[j]);
+    //  }
+
+      // luoti osuu seinään
+      if(luoti.x + luoti.radius > ampumarata.canvas.width) {
+        luoti.x  = ampumarata.canvas.width - luoti.radius;
+        luoti.vx = -luoti.vx;
+
+        luoti.gravity = ampumarata.gravity;
+
+        // Luoti kimpoaa random suuntaan
+        luoti.vy = -(Math.random() * 150) + 75;
+        //console.log(luoti.vy)
+      }
+
+      if(luoti.x + luoti.radius < 300) {
+        luoti.x  = 300 + luoti.radius;
+        luoti.vx = -luoti.vx;
+
+        // Luoti kimpoaa random suuntaan
+        luoti.vy = -(Math.random() * 150) + 75;
+        //console.log(luoti.vy)
+      }
+      else if(luoti.y + luoti.radius > ampumarata.canvas.width) {
+        luoti.x  = ampumarata.canvas.width - luoti.radius;
+        luoti.vx = -.4 * luoti.vx;
+
+        luoti.gravity = ampumarata.gravity;
+
+        // Luoti kimpoaa random suuntaan
+        //luoti.vy = -(Math.random() * 150) + 75;
+        //console.log(luoti.vy)
+      }
+      else if(luoti.y + luoti.radius > ampumarata.height-200) {
+        luoti.y = ampumarata.height-200 - luoti.radius;
+        luoti.vy = -0.1 * luoti.vy;
+        luoti.vx = .85 * luoti.vx;
+      }
+      //  luoti.pomput++;
+      // Jos luoti osuu maahan
+      var loppupaikka = -1;
+      var kuoppa = 0.009 * (-420 + luoti.x) * (420 - luoti.x) + 500;
+      var maanpinta = 0.009 * (-420 + 300) * (420 - 300) + 500;
+      //if(300 < luoti.x + luoti.radius &&
+      //   luoti.x + luoti.radius < 540) {
+      //  if(luoti.y > kuoppa) {
+      //    loppupaikka = kuoppa - luoti.radius+10;
+      //    luoti.y = loppupaikka;
+      //    luoti.vy = -0.1 * luoti.vy;
+      //    luoti.vx = -.1 * luoti.vx;
+      //    luoti.pomput++;
+      //  }
+      //}
+
+      //else if(luoti.y + luoti.radius > maanpinta) {
+      //  loppupaikka = maanpinta - luoti.radius;
+      //  luoti.y = loppupaikka;
+      //  luoti.vy = -0.1 * luoti.vy;
+      //  luoti.vx = .85 * luoti.vx;
+      //  luoti.pomput++;
+      //}
+
+
+
+      //jotain
+
+
+
+
+
+      luoti.x  += luoti.vx;
+      luoti.vy += luoti.gravity;
+      luoti.y  += luoti.vy;
+      luoti.draw();
+      }
+    }());
+
+    </script>
+  </body>
+</html>

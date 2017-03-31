@@ -1,0 +1,237 @@
+﻿body {
+    color: #000305;
+    font-size: 100%;
+    font-family: 'ARIAL';
+}
+
+a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+body #canvas {
+  display: block;
+  position: relative;
+  margin-top: 3%;
+  border-radius: 3px;
+  background: rgba(1,1,1,0.4)
+}
+
+.soppabody {
+  background: url('/jeesjees/img/soppa.jpg');
+  background-size: 100%;
+  margin: 0 auto;
+  width: 70%;
+  border-radius: 3%;
+}
+
+.div-table {
+  display: inline-table;
+  width: 200px;
+  border-collapse: collapse;
+  margin: 5px 0;
+  color: rgba(550, 550, 550, 0.9);
+}
+
+.div-row {
+  display: block;
+  clear: both;
+  margin: -2px 5px;
+  border: solid;
+  border-radius: 5px 0px;
+  padding: 3px;
+  border-color: rgba(150, 150, 150, 0.5);
+}
+
+.soppa {
+  margin-top: 3%;
+  font-family: Verdana, Georgia, Arial;
+  font-size:120%;
+  border-collapse: collapse;
+  background-color: rgba(30,30,30,.7);
+  color: #FFF;
+}
+
+.soppa td {
+  border-style: inset;
+  border-color: #444;
+  margin: 5%;
+  vertical-align: top;
+}
+
+.body {
+    background: url("https://www.planwallpaper.com/static/images/Cool-Background-Wallpaper-Dekstop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    width: 70%;
+    clear: both;
+}
+
+.mainHeader nav {
+    background: linear-gradient(120deg, #666, #555);
+    height: 40px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.mainHeader nav ul {
+    list-style: none;
+    margin: 0 auto;
+}
+
+.mainHeader nav ul li {
+    color: #FFF;
+    float: left;
+    display: inline;
+}
+
+.mainHeader nav a:link {
+    color: #FFF;
+    display: inline-block;
+    padding: 10px 25px;
+    height: 20px;
+}
+
+.mainHeader nav a:hover, .mainHeader nav a:active {
+    background-color: #CF5C3F;
+}
+
+.mainHeader nav ul li a {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.aamut {
+    background-color: rgba(1, 1, 1, 0.4);
+    border-radius: 5px;
+    display: block;
+}
+
+.aamut #vid {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.aamut iframe {
+  width: 300px;
+  height: 169px;
+  display:inline-block;
+}
+
+#h1  {
+    background-color: rgba(255, 255, 255, .1);
+    display: block;
+    padding: 3%;
+    font-family: 'Comic Sans MS';
+    color: rgb(100,100,100);
+    text-align: center;
+}
+
+#aamukasa {
+    text-align: center;
+    font-size: 500%;
+    color: red;
+    padding: 0;
+    margin: 0;
+}
+
+#kpv {
+    display: inline;
+    text-align: center;
+    font-size: 200%;
+    padding: 0;
+}
+
+#a {
+    color: red;
+    font-size: 200%;
+}
+
+.body #pvm {
+    position: fixed;
+    margin: 10px 0 0 3px;
+    opacity: .8;
+    color: white;
+}
+
+.bul {
+  display: inline;
+}
+
+.hattu {
+  padding: 30% 0;
+  position: relative;
+}
+
+#nakitettu {
+  transform: rotate(180deg);
+  animation-name: nakitettu;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+}
+
+#hattu {
+  position: absolute;
+  transform: rotate(180deg);
+  z-index: 2;
+  right: 62.2%;
+  top: 50.5%;
+  width: 42%;
+}
+
+#hattuala {
+  display: relative;
+  transform: rotate(180deg);
+  right: 40%;
+  top: 50%;
+  width: 38%;
+
+}
+
+@keyframes nakitettu {
+  0% {transform: rotate(10000deg)}
+  25% {transform: rotate(5000deg)}
+  75% {transform: rotate(-500deg)}
+  100% {transform: rotate(0deg)}
+}
+
+@media only screen and (min-width: 150px) and (max-width: 725px)
+{
+    body {
+    width: 95%;
+    }
+
+    .mainHeader nav {
+    height: 200px;
+    }
+
+    .mainHeader nav ul {
+        padding-left: 0;
+    }
+
+    .mainHeader nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .mainHeader nav a:link {
+        color: #FFF;
+        display: block;
+        padding: 10px 25px;
+        height: 20px;
+    }
+
+    .aamut iframe {
+      width: 200px;
+      height: 113px;
+    }
+
+    .body #pvm {
+      visibility: hidden;
+    }
+}
