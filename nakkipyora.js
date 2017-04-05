@@ -1,25 +1,34 @@
-window.onload = function() {
-  var canvas = document.getElementById("canvas");
-  var ctx = canvas.getContext("2d");
-  var hattu = new Image();
-  var alaosa = new Image();
-  hattu.src = "img/hattu.png";
-  alaosa.src = "img/hattualaosa.png";
-
-  var t = 0;
-  hattu.onload = function() {
-    alaosa.onload = function update() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      draw(ctx, alaosa, 81, 115, 230, 70, Math.PI+.1);
-      animoi_teksti(ctx, t);
-      draw(ctx, hattu, 70, 170, 250, 200, Math.PI+.1);
-      t++;
-      if(t < 150) {
-        setTimeout(update, 1);
-      }
-  }();
+var hat = {
+  canvas: document.getElementById("canvas"),
+  ctx: canvas.getContext("2d"),
+  hattu: new Image(),
+  alaosa: new Image(),
+  t: 0,
+  update: function() {
+    self.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    draw(self.ctx, self.alaosa, 81, 115, 230, 70, Math.PI+.1);
+    animoi_teksti(self.ctx, self.t);
+    draw(self.ctx, self.hattu, 70, 170, 250, 200, Math.PI+.1);
+    self.t++;
+    if(self.t < 150) {
+      setTimeout(update, 1);
+    }
   }
-};
+}
+
+window.onload = function() {
+  //var canvas= document.getElementById("canvas");
+  //var ctx = canvas.getContext("2d");
+  //var hattu= new Image();
+  //var alaosa = new Image();
+  hat.hattu.src = "img/hattu.png";
+  hat.alaosa.src = "img/hattualaosa.png";
+  hat.hattu.onload = function() {
+    hat.alaosa.onload = function() {
+      hat.update();
+    };
+  };
+}
 
 function draw(ctx, img, x, y, w, h, rotation) {
   ctx.save();

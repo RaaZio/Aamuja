@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Amusivu</title>
+  <title>Nakki :)</title>
   <meta charset='Utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <link rel='stylesheet' href='style/style.css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 </head>
-<body>
+<body class="body">
 
-  <body class='body'>
-    <header class='mainHeader'>
-      <nav><ul>
-        <li><a href='/jeesjees/index.html'>Kotii</a></li>
-        <li><a href='/jeesjees/ruokalista.php'>Hernesoppa</a></li>
-        <li><a href='/jeesjees/nakkipyora.html'>Nakki</a></li>
-        <li><a href='/jeesjees/visuaaliset_aamut.html'>f</a></li>
-        <li><a href='v'>koiarx</a></li>
-      </ul></nav>
-    </header>
+  <?php
+    include 'navipalkki.php';
+  ?>
 
   <!--<div class="hattu">
     <img id="hattuala" src="/jeesjees/img/hattualaosa.png">
