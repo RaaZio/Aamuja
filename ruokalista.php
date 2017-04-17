@@ -14,12 +14,13 @@ $xml = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
 ?>
 <!DOCTYPE html>
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title></title>
-
+	
 	<link href="style/style.css" rel="stylesheet">
-	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+	
 </head>
 <body class="soppabody">
 <header class='mainHeader'>
